@@ -4,7 +4,7 @@ description: Reference guide for the Media API
 api: Media API
 ---
 
-# API Reference 
+# Media API Reference
 
 The Media API allows you to manage media files associated with your account and its applications. Authorisation is done using a [JSON Web Token](/concepts/guides/authentication#json-web-tokens-jwt) (JWT) in the `Authorization` header or in a `jwt-token` URL parameter.
 
@@ -12,7 +12,7 @@ The Media API allows you to manage media files associated with your account and 
 
 [POST] `https://api.nexmo.com/v3/media`
 
-This endpoint is used to upload media files (usually audio) to the media service. Upon successful upload, you will get back a response with status 201 giving you a URL pointing to the metadata for the media file.
+This endpoint is used to upload media files (usually audio) to the media service. Upon successful upload, you will get back a response with status `201 Created` giving you a URL pointing to the metadata for the media file.
 
 The media file will be associated with both your account and the Application ID of the JWT you use. This enables you to separate media files out by application.
 
@@ -79,12 +79,11 @@ Successful requests will return a JSON document that follows the conventions of 
 |404|No such item.|
 |500|Internal server error|
 
-A `404` may be returned if no results meet your selection criteria.
-
+A `404 Not Found` may be returned if no results meet your selection criteria.
 
 ## Download media file
 
-[GET] `/v3/media/{media_id}`
+[GET] `/v3/media/:media_id`
 
 You can retrieve media files by GET-ting the URL of the file (making sure to remove the `/info` URL suffix).
 
@@ -108,7 +107,7 @@ The number of times a file can be downloaded is determined by the `max_downloads
 
 |Name|Description|Required|
 |----|-----------|--------|
-|`jwt-token`|A JSON Web Token. Can be used as an alternative to sending an `Authorization` header.|No|
+|`jwt-token`|A JSON Web Token. Can be used as an alternative to sending an `Authorization` header.|❎|
 
 ### Responses
 
@@ -124,7 +123,7 @@ The number of times a file can be downloaded is determined by the `max_downloads
 
 ## Delete media file
 
-[DELETE] `https://api.nexmo.com/v3/media/{media_id}`
+[DELETE] `https://api.nexmo.com/v3/media/:media_id`
 
 Deletes the media file. This API call must be authenticated using the JWT of the application the media file is associated to (as appropriate).
 
@@ -141,7 +140,7 @@ Deletes the media file. This API call must be authenticated using the JWT of the
 
 ## Get media file metadata
 
-[GET] `https://api.nexmo.com/v3/media/{media_id}/info`
+[GET] `https://api.nexmo.com/v3/media/:media_id/info`
 
 Authentication can be done using a JSON Web Token for the application the media is associated with.
 
@@ -199,7 +198,7 @@ Authentication can be done using a JSON Web Token for the application the media 
 
 ## Update media file metadata
 
-[PUT] `https://api.nexmo.com/v3/media/{media_id}/info`
+[PUT] `https://api.nexmo.com/v3/media/:media_id/info`
 
 You can update a number of components of the media item's metadata. To do this, PUT a JSON object (with `Content-Type` of `application/json`) to the same URL as used to [retrieve data about it](#get-media-file-metadata) with the relevant keys.
 
