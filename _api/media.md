@@ -25,7 +25,7 @@ The following parameters can be passed in as form data in addition to the file.
 |Name|Type|Description|Required|
 |---|---|---|---|
 |`filename`| string | An optional name for the file. | ❎
-|`info`| string (usually JSON object) | Any metadata you wish to associate with the file. | ❎
+|`info`| string | Any metadata you wish to associate with the file. This can be encoded in any manner you wish but we recommend storing data encoded as JSON. | ❎
 |`url`| string (URL) | This can be provided as an alternative to the file data. We will download the file from this URL. This will be stored in `source_url`. | ❎
 
 
