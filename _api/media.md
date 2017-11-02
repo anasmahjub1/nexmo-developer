@@ -1,10 +1,10 @@
 ---
-title: API reference
+title: Media API Reference
 description: Reference guide for the Media API
 api: Media API
 ---
 
-# Media API Reference
+# API Reference
 
 The Media API allows you to manage media files associated with your account and its applications. Authorisation is done using a [JSON Web Token](/concepts/guides/authentication#json-web-tokens-jwt) (JWT) in the `Authorization` header or in a `jwt-token` URL parameter.
 
@@ -31,7 +31,7 @@ The following parameters can be passed in as form data in addition to the file.
 
 ### Response
 
-If the media item has uploaded without error, you will get a `201` status code. The `Location` header will provide a URL for your file.
+If the media item has uploaded without error, you will get a `201 Created` status code. The `Location` header will provide a URL for your file.
 
 If there was a problem with either your request or with the server, you will get an error status code. The body of the response may provide more details about the error as a JSON document.
 
@@ -43,7 +43,7 @@ If there was a problem with either your request or with the server, you will get
 |404|No such item|
 |500|Internal server error|
 
-The URL returned on `201` will be suffixed with `/info` like this: 
+The URL returned on `201 Created` will be suffixed with `/info` like this: 
 
 > `https://api.nexmo.com/v3/media/aaaaaaaa-0000-aaaa-0000-aaaaaaaaaaaa/info`
 
